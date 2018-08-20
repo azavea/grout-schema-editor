@@ -242,14 +242,10 @@
                     collapsed: true,
                     theme: 'bootstrap3',
                     iconlib: 'bootstrap3',
+                    startval: ctl.record ? ctl.record.data : null
                 },
                 errors: []
             };
-
-            // If a record is loaded, seed the editor with that record.
-            if (ctl.record) {
-                ctl.editor.options.startval = ctl.record.data;
-            }
             /* jshint camelcase: true */
         }
 
