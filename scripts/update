@@ -13,61 +13,102 @@ source "${DIR}/_config.sh"
 source "${DIR}/_init_db.sh"
 
 function usage() {
-    echo -n "Usage: $(basename "$0")
+    echo -n "Usage: $(basename "$0") [options]
 
 Make sure the development environment is up to date.
+
+Options:
+    --help      Display this usage information.
+    --ssh       Install GitHub dependencies over SSH.
+    --https     Install GitHub dependencies over HTTPS (default).
 "
+}
+
+function build() {
+    # Run the update build.
+    echo "Installing the API server..."
+    echo "----------------------------"
+    server=./grout-server
+    if [ ! -d "$server" ];
+    then
+        echo "API server does not exist in ${server} -- cloning from GitHub..."
+
+        if [ "$1" = "ssh"  ];
+        then
+            echo "Cloning over SSH..."
+            giturl=git@github.com:azavea/grout-server.git
+        else
+            # Default to HTTPS.
+            echo "Cloning over HTTPS"...
+            giturl=https://github.com/azavea/grout-server.git
+        fi
+
+        git clone $giturl $server
+        echo "Creating environmental variables in ${server}/.env..."
+        cp ${server}/.env.example ${server}/.env
+        echo "Server installation complete!"
+    else
+        echo "Skipping API server installation since ${server} already exists."
+    fi
+    echo
+
+    echo "Building container images..."
+    echo "----------------------------"
+    docker-compose build
+    echo
+
+    echo "Installing NPM packages..."
+    echo "----------------------------"
+    docker-compose run --rm --entrypoint "yarn install" editor
+    echo
+
+    echo "Running migrations in the Grout server..."
+    echo "-----------------------------------------"
+    init_db
+    docker-compose run --rm grout manage.py migrate
+    echo
+
+    echo "Uploading sample data..."
+    echo "-------------------------"
+    docker-compose run --rm loaddata
+    echo
+
+    echo "Stopping all running services..."
+    echo "--------------------------------"
+    docker-compose stop
+    echo
+
+    echo "Build complete!"
 }
 
 if [ "${BASH_SOURCE[0]}" = "${0}" ]
 then
-    if [ "${1:-}" = "--help" ]
+    if [ -z "$1" ];
     then
-        usage
+        build
     else
-        echo "Installing the API server..."
-        echo "----------------------------"
-        server=./grout-server
-        if [ ! -d "$server" ];
-        then
-            echo "API server does not exist in ${server} -- cloning from GitHub..."
-            git clone git@github.com:azavea/grout-server.git $server
-            echo
-            echo "Creating environmental variables in ${server}/.env..."
-            cp ${server}/.env.example ${server}/.env
-            echo
-            echo "Server installation complete!"
-        else
-            echo "Skipping API server installation since ${server} already exists."
-        fi
-        echo
+        case "$1" in
+            -h|--help)
+                usage
+                exit 0
+                ;;
 
-        echo "Building container images..."
-        echo "----------------------------"
-        docker-compose build
-        echo
+            --ssh)
+                build ssh
+                exit 0
+                ;;
 
-        echo "Installing NPM packages..."
-        echo "----------------------------"
-        docker-compose run --rm --entrypoint "yarn install" editor
-        echo
+            --https)
+                build https
+                exit 0
+                ;;
 
-        echo "Running migrations in the Grout server..."
-        echo "-----------------------------------------"
-        init_db
-        docker-compose run --rm grout manage.py migrate
-        echo
-
-        echo "Uploading sample data..."
-        echo "-------------------------"
-        docker-compose run --rm loaddata
-        echo
-
-        echo "Stopping all running services..."
-        echo "--------------------------------"
-        docker-compose stop
-        echo
-
-        echo "Build complete!"
+            *)
+                echo "ERROR: Argument '"$1"' not registered."
+                echo
+                usage
+                exit 1
+                ;;
+        esac
     fi
 fi
