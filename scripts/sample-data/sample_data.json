@@ -1,0 +1,428 @@
+[
+    {
+        "label": "Event",
+        "plural_label": "Events",
+        "description": "A queer happening advertised by a poster.",
+        "active": true,
+        "schema": {
+            "schema": {
+                "type": "object",
+                "title": "",
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "properties": {
+                    "driverEventDetails": {
+                        "$ref": "#/definitions/driverEventDetails",
+                        "options": {
+                            "collapsed": true
+                        }
+                    }
+                },
+                "definitions": {
+                    "driverEventDetails": {
+                        "type": "object",
+                        "title": "Event Details",
+                        "details": true,
+                        "multiple": false,
+                        "required": [
+                            "_localId",
+                            "Title",
+                            "Short description"
+                        ],
+                        "properties": {
+                            "URL": {
+                                "type": "string",
+                                "format": "url",
+                                "fieldType": "text",
+                                "isSearchable": true,
+                                "propertyOrder": 3
+                            },
+                            "Title": {
+                                "type": "string",
+                                "format": "text",
+                                "fieldType": "text",
+                                "minLength": 1,
+                                "isSearchable": true,
+                                "propertyOrder": 0
+                            },
+                            "_localId": {
+                                "type": "string",
+                                "options": {
+                                    "hidden": true
+                                },
+                                "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+                            },
+                            "Long description": {
+                                "type": "string",
+                                "format": "textarea",
+                                "fieldType": "text",
+                                "isSearchable": true,
+                                "propertyOrder": 2
+                            },
+                            "Short description": {
+                                "type": "string",
+                                "format": "text",
+                                "fieldType": "text",
+                                "minLength": 1,
+                                "isSearchable": true,
+                                "propertyOrder": 1
+                            }
+                        },
+                        "definitions": {},
+                        "description": "Details for Event",
+                        "plural_title": "Event Details",
+                        "propertyOrder": 0
+                    }
+                },
+                "description": "",
+                "plural_title": ""
+            },
+            "version": 1,
+            "next_version": null,
+            "records": [
+                {
+                    "data": {
+                        "driverEventDetails": {
+                            "URL": "https://www.instagram.com/seltzerworldwide/",
+                            "Title": "Seltzer Lime + Sea Salt",
+                            "_localId": "13cd45c2-f732-4afa-80c6-15b2a95bfb22",
+                            "Long description": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id vestibulum ipsum. Integer quis quam eget odio aliquet gravida. Integer sit amet metus scelerisque, suscipit nulla sed, maximus nibh. Fusce pellentesque tincidunt lorem vitae convallis. Praesent feugiat venenatis aliquam. Pellentesque ut aliquam nulla. Nulla vitae mauris tristique, pretium nunc eget, gravida felis. Duis et dolor sed lorem iaculis convallis. Praesent et euismod neque. Curabitur commodo tincidunt nisi. Nam lacinia sagittis turpis et lacinia. Mauris ac blandit orci. Nulla facilisi. Maecenas ullamcorper et felis eu placerat.\n\nVestibulum id nibh sapien. Praesent bibendum enim vel est dapibus, at lacinia ipsum aliquet. Nullam quis diam non lectus luctus elementum. Aliquam hendrerit tempus mollis. Donec vulputate metus sed sem eleifend, et tincidunt nibh cursus. Integer gravida nulla sit amet lectus tincidunt pulvinar. Aenean cursus eros lorem, vel malesuada justo feugiat in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus sit amet eros eleifend, rhoncus risus sit amet, varius nunc. Vestibulum feugiat a ex vel sollicitudin. Curabitur auctor est a felis aliquet semper. Curabitur interdum aliquet convallis.\n\nNam eu pellentesque ipsum. Mauris pharetra arcu id orci lobortis ultrices. Sed mi libero, feugiat eu arcu sit amet, laoreet cursus nisl. Morbi fringilla posuere tortor, vel consequat mauris elementum non. Donec scelerisque nulla eget feugiat sagittis. Ut convallis aliquam enim ac pellentesque. Nam volutpat tempus tellus, quis aliquet mauris facilisis quis. Quisque semper nisi in tellus vehicula, in varius diam sollicitudin. Duis consequat, augue ut commodo iaculis, diam odio congue libero, sit amet cursus dui metus vitae orci. Mauris neque nibh, dapibus eu tellus id, finibus tincidunt metus. Donec quam arcu, ullamcorper in dolor ut, pretium vulputate nulla. Duis pulvinar diam at dolor elementum sagittis. Phasellus sit amet magna non nulla pulvinar scelerisque sed vel leo. Donec nec tristique augue. Morbi sed posuere ante, vitae semper libero. Mauris feugiat urna sed finibus egestas. ",
+                            "Short description": "A queer dance party."
+                        }
+                    },
+                    "occurred_from": "2018-07-14T21:00:00Z",
+                    "occurred_to": "2018-07-15T03:00:00Z",
+                    "geom": {
+                        "type": "Point",
+                        "coordinates": [
+                            -75.2146178483963,
+                            39.93579777176213
+                        ]
+                    },
+                    "archived": false
+                },
+                {
+                    "data": {
+                        "driverEventDetails": {
+                            "URL": "",
+                            "Title": "Lesbian Wedding",
+                            "_localId": "6b84720a-d01c-4882-a36c-b3139514b6b5",
+                            "Long description": "Lesbian dance party at Panorama on Gray's Ferry. Likely in the same space as Lacquer.",
+                            "Short description": "\"The daytime dance party of yr dreams!\""
+                        }
+                    },
+                    "archived": false,
+                    "occurred_from": "2017-06-11T20:00:00Z",
+                    "occurred_to": "2017-06-11T20:00:00Z",
+                    "geom": {
+                        "type": "Point",
+                        "coordinates": [
+                            -75.2144497693007,
+                            39.93592555020128
+                        ]
+                    },
+                    "location_text": null
+                },
+                {
+                    "data": {
+                        "driverEventDetails": {
+                            "URL": "",
+                            "Title": "Philadelphia gal pal reading club",
+                            "_localId": "73f586a6-61e1-4ed8-9e90-727b9e6045c0",
+                            "Long description": "",
+                            "Short description": "The first meeting of a book club for \"Ladies, Gals, and Femmes of Philadelphia\"."
+                        }
+                    },
+                    "archived": false,
+                    "occurred_from": "2018-08-28T23:00:00Z",
+                    "occurred_to": "2018-08-28T23:00:00Z",
+                    "geom": {
+                        "type": "Point",
+                        "coordinates": [
+                            -75.20997584466386,
+                            39.948955041867855
+                        ]
+                    },
+                    "location_text": null
+                },
+                {
+                    "data": {
+                        "driverEventDetails": {
+                            "URL": "",
+                            "Title": "Flawless 8: America Was Never Great",
+                            "_localId": "218b20c6-be34-4369-bcbd-806cd61c031d",
+                            "Long description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at sapien at tortor consequat maximus in sed arcu. Vivamus viverra diam nulla. Suspendisse malesuada et ipsum hendrerit rhoncus. Vivamus porttitor sem arcu. Proin rutrum lorem vitae consequat placerat. Phasellus hendrerit non arcu sed bibendum. Fusce at euismod felis.",
+                            "Short description": "Dance party and fundraiser for Red Warrior Camp #NoDAPL and Charlotte, NC protesters."
+                        }
+                    },
+                    "archived": false,
+                    "occurred_from": "2017-08-13T02:00:00Z",
+                    "occurred_to": "2017-08-13T02:00:00Z",
+                    "geom": {
+                        "type": "Point",
+                        "coordinates": [
+                            -75.2232581437056,
+                            39.94851089550361
+                        ]
+                    },
+                    "location_text": null
+                }
+            ]
+        }
+    },
+    {
+        "label": "Poster",
+        "plural_label": "Posters",
+        "description": "An advertisement for an event.",
+        "active": true,
+        "schema": {
+            "schema": {
+                "type": "object",
+                "title": "",
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "properties": {
+                    "driverPosterDetails": {
+                        "$ref": "#/definitions/driverPosterDetails",
+                        "options": {
+                            "collapsed": true
+                        }
+                    }
+                },
+                "definitions": {
+                    "driverPosterDetails": {
+                        "type": "object",
+                        "title": "Poster Details",
+                        "details": true,
+                        "multiple": false,
+                        "required": [
+                            "_localId",
+                            "Image",
+                            "Event name",
+                            "Short description"
+                        ],
+                        "properties": {
+                            "URL": {
+                                "type": "string",
+                                "format": "url",
+                                "fieldType": "text",
+                                "isSearchable": true,
+                                "propertyOrder": 6
+                            },
+                            "Image": {
+                                "type": "string",
+                                "media": {
+                                    "type": "image/jpeg",
+                                    "binaryEncoding": "base64"
+                                },
+                                "fieldType": "image",
+                                "propertyOrder": 0
+                            },
+                            "_localId": {
+                                "type": "string",
+                                "options": {
+                                    "hidden": true
+                                },
+                                "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+                            },
+                            "Artist URL": {
+                                "type": "string",
+                                "format": "url",
+                                "fieldType": "text",
+                                "isSearchable": true,
+                                "propertyOrder": 5
+                            },
+                            "Event name": {
+                                "type": "string",
+                                "format": "text",
+                                "fieldType": "text",
+                                "minLength": 1,
+                                "isSearchable": true,
+                                "propertyOrder": 1
+                            },
+                            "Artist name": {
+                                "type": "string",
+                                "format": "text",
+                                "fieldType": "text",
+                                "isSearchable": true,
+                                "propertyOrder": 4
+                            },
+                            "Long description": {
+                                "type": "string",
+                                "format": "textarea",
+                                "fieldType": "text",
+                                "isSearchable": true,
+                                "propertyOrder": 3
+                            },
+                            "Short description": {
+                                "type": "string",
+                                "format": "text",
+                                "fieldType": "text",
+                                "minLength": 1,
+                                "isSearchable": true,
+                                "propertyOrder": 2
+                            }
+                        },
+                        "definitions": {},
+                        "description": "Details for Poster",
+                        "plural_title": "Poster Details",
+                        "propertyOrder": 0
+                    }
+                },
+                "description": "",
+                "plural_title": ""
+            },
+            "version": 1,
+            "next_version": null,
+            "records": [
+                {
+                    "data": {
+                        "driverPosterDetails": {
+                            "URL": "https://www.instagram.com/p/Bj8XMnslE0E/?taken-by=seltzerworldwide",
+                            "_localId": "cf24282b-e18f-4390-b868-1a998206ee31",
+                            "Artist URL": "",
+                            "Event name": "Seltzer Lime + Sea Salt",
+                            "Artist name": "",
+                            "Long description": "\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet elit enim. Donec sit amet neque ornare, euismod leo eget, lacinia erat. Nulla tempor porta eros a maximus. Pellentesque fermentum, urna mattis euismod volutpat, libero tortor pretium leo, eu iaculis justo massa eget elit. Morbi nec nisl nisi. Nunc vitae purus id tellus tempus pharetra quis quis orci. Duis viverra laoreet metus sed euismod. Sed viverra ante tortor, eu ultricies lorem tincidunt blandit. Duis feugiat nisi eu congue malesuada. Nulla lacinia dignissim nunc et eleifend. Aliquam non risus vel leo ornare dictum vel sit amet nulla.\n\nUt non tincidunt eros, quis laoreet metus. Maecenas faucibus tincidunt odio, eget porta ex. Nam sodales leo lectus, sed elementum mauris rutrum ac. Nam ut rhoncus lacus. Sed sit amet luctus ex. Nam dictum rutrum massa, sit amet ornare nibh efficitur sit amet. Praesent nisl quam, maximus a urna eu, congue porta mauris. Suspendisse potenti. Integer dapibus in dui quis vulputate. Aliquam vehicula, neque quis rutrum molestie, diam turpis volutpat sapien, ac aliquet sapien justo vel turpis. Cras sit amet elit auctor, vestibulum nunc ut, suscipit sem. ",
+                            "Short description": "A poster wheatpasted on the side of a mailbox.",
+                            "Image": "seltzer.small.jpg"
+                        }
+                    },
+                    "occurred_from": "2018-07-08T19:04:00Z",
+                    "occurred_to": "2018-07-08T19:04:00Z",
+                    "geom": {
+                        "type": "Point",
+                        "coordinates": [
+                            -75.20918101072311,
+                            39.949631680360746
+                        ]
+                    },
+                    "archived": false
+                },
+                {
+                    "data": {
+                        "driverPosterDetails": {
+                            "URL": "",
+                            "_localId": "6131f759-2aef-419a-809f-af1d5d086cc9",
+                            "Artist URL": "http://metropolarity.net/",
+                            "Event name": "Ride With Us Against the Empire",
+                            "Artist name": "Metropolarity",
+                            "Long description": "Poster reads:\n\n\"Ride With Us\nAgainst the Empire\n\nDo you remember the last time you saw/heard/read a message that made you feel powerful? Understood? Loved? Listened to? Celebrated?\n\nDo you remember the last time you saw/heard/read about a place you wanted to be? A future world that included you? A tale of the past that did not forget? A present that spoke the truth?\n\nHone Your Weapons of Perception\n\nWhat is the purpose of this message?\n\nWhat's missing?\n\nWho made this?\n\nHow can I tell?\n\nWhat would I do differently?\n\nIt concerns you!\n\nUnstoppable technique\nLive from the 215\n\nWe do not use negative thoughts or words against ourselves.\n\nEmpire's utopia is our dystopia. We know there are more than 2 possibilities.\n\nPractice using these simple phrases to nurture your powers of perception & to protect yourself and the vulnerable.\n\nWe are quantum and monster and chaman and cyborg alive\n\nQuality Futures 4 Cheap\n\n@metropolarity\"\n",
+                            "Short description": "Poster by Metropolarity.",
+                            "Image": "metropolarity.small.jpg"
+                        }
+                    },
+                    "archived": false,
+                    "occurred_from": "2018-07-11T00:31:00Z",
+                    "occurred_to": "2018-07-11T00:31:00Z",
+                    "geom": {
+                        "type": "Point",
+                        "coordinates": [
+                            -75.20970762376237,
+                            39.94833817113875
+                        ]
+                    },
+                    "location_text": null
+                },
+                {
+                    "data": {
+                        "driverPosterDetails": {
+                            "URL": "",
+                            "_localId": "38636cf7-6c57-433a-afab-3ceb7c3ab5cb",
+                            "Artist URL": "http://www.dretime.net/",
+                            "Event name": "Riot Grrrl Life Drawing",
+                            "Artist name": "Dre Grigoropol",
+                            "Long description": "Poster is slightly ripped. Visible text reads:\n\n\"Riot Grrrl Life Drawing\nAt Eris Temple Arts\n602 S. 52nd St. Phila. PA\nJune 14th 5PM\n\nA Philly Zine Fe\"",
+                            "Short description": "A life drawing event for Philly Zine Fest 2018.",
+                            "Image": "riot-grrrl.small.jpg"
+                        }
+                    },
+                    "archived": false,
+                    "occurred_from": "2018-07-11T00:28:00Z",
+                    "occurred_to": "2018-07-11T00:28:00Z",
+                    "geom": {
+                        "type": "Point",
+                        "coordinates": [
+                            -75.20951539578162,
+                            39.94933777622163
+                        ]
+                    },
+                    "location_text": null
+                },
+                {
+                    "data": {
+                        "driverPosterDetails": {
+                            "URL": "",
+                            "_localId": "38899f67-86a3-4414-9328-605b72ec760e",
+                            "Artist URL": "",
+                            "Event name": "Lesbian Wedding",
+                            "Artist name": "",
+                            "Long description": "",
+                            "Short description": "\"The daytime dance party of yr dreams!\"",
+                            "Image": "lesbian-wedding.small.jpg"
+                        }
+                    },
+                    "archived": false,
+                    "occurred_from": "2017-05-22T14:05:00Z",
+                    "occurred_to": "2017-05-22T14:05:00Z",
+                    "geom": {
+                        "type": "Point",
+                        "coordinates": [
+                            -75.21158606114113,
+                            39.949197953459574
+                        ]
+                    },
+                    "location_text": null
+                },
+                {
+                    "data": {
+                        "driverPosterDetails": {
+                            "URL": "",
+                            "_localId": "39c70ac0-924e-4ea4-8f71-cb7c42578742",
+                            "Artist URL": "",
+                            "Event name": "Philadelphia gal pal reading club",
+                            "Artist name": "",
+                            "Long description": "Text reads:\n\n\"Ladies, Gals, and Femmes of Philadelphia, a new book club has arrived!\n\nCome to Clark Park August 28th at 7 p.m. with your favorite book by a female/femme/non-binary author for discussion to receive a reading list for 2018-2019!\n\nSnacks will be served (vegan options available)\n\nFor questions and info, please e-mail clbassier@gmail.com\" ",
+                            "Short description": "A book club for ladies, gals, and femmes.",
+                            "Image": "gal-pal-book-club.small.jpg"
+                        }
+                    },
+                    "archived": false,
+                    "occurred_from": "2018-08-05T13:17:00Z",
+                    "occurred_to": "2018-08-05T13:17:00Z",
+                    "geom": {
+                        "type": "Point",
+                        "coordinates": [
+                            -75.20954310894012,
+                            39.949292816772484
+                        ]
+                    },
+                    "location_text": null
+                },
+                {
+                    "data": {
+                        "driverPosterDetails": {
+                            "URL": "",
+                            "_localId": "21bf05a1-0759-48b5-b6e3-f06c9416c6b6",
+                            "Artist URL": "",
+                            "Event name": "Flawless 8: America Was Never Great",
+                            "Artist name": "",
+                            "Long description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at sapien at tortor consequat maximus in sed arcu. Vivamus viverra diam nulla. Suspendisse malesuada et ipsum hendrerit rhoncus. Vivamus porttitor sem arcu. Proin rutrum lorem vitae consequat placerat. Phasellus hendrerit non arcu sed bibendum. Fusce at euismod felis.",
+                            "Short description": "A poster wheatpasted to the side of a building.",
+                            "Image": "flawless.small.jpg"
+                        }
+                    },
+                    "archived": false,
+                    "occurred_from": "2018-07-10T14:17:00Z",
+                    "occurred_to": "2018-07-10T14:17:00Z",
+                    "geom": {
+                        "type": "Point",
+                        "coordinates": [
+                            -75.2158132225486,
+                            39.948708571541644
+                        ]
+                    },
+                    "location_text": null
+                }
+            ]
+        }
+    }
+]

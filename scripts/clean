@@ -22,7 +22,11 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
     if [ "${1:-}" = "--help" ]; then
         usage
     else
-        # Remove unused containers, images, and volumes
-        docker system prune -f
+        # Stop containers and shut down the network.
+        docker-compose down
+
+        # Remove any dangling volumes and images.
+        docker images -qf dangling=true | xargs -r docker rmi
+        docker volume ls -qf dangling=true | xargs -r docker volume rm
     fi
 fi

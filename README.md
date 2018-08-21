@@ -19,7 +19,7 @@ repo:
 
 ```
 # Run this command in your project directory.
-git clone git@github.com:azavea/grout-server.git
+git clone git@github.com:azavea/grout-schema-editor.git
 ```
 
 You can also manage the dependency using [git
@@ -49,6 +49,30 @@ they can communicate with each other. For this purpose, we recommend
 [Docker Compose](https://docs.docker.com/compose/). You can find an example
 of a project that integrates an Grout server with Docker Compose in the
 [Grout Blueprint](https://github.com/azavea/grout-blueprint) repo.
+
+## Developing
+
+You can set up a development environment for working on Grout Schema Editor
+using the `update` script. (Note that the `update` script assumes you have
+git installed with SSH set up. If you need an SSH key, refer to [the docs for generating
+one](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key).)
+
+```bash
+# Set up the development environment.
+./scripts/update
+
+# Create a local config file for the project.
+cp example/config.js app/scripts/config.js
+```
+
+Next, use the `server` script to start the development server:
+
+```bash
+./scripts/server
+```
+
+This will run a Grout API server on `localhost:8000/api`, and the schema editor
+app on `localhost:9000`.
 
 ## Testing
 

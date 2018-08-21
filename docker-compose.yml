@@ -2,11 +2,36 @@ version: '3'
 
 services:
 
-  test:
+  db:
+    image: quay.io/azavea/postgis:2.4-postgres10.3-slim
+
+  grout:
+    build: ./grout-server
+    depends_on:
+      - db
+    volumes:
+      - ./grout-server:/opt/grout-server
+    entrypoint: python
+    command: manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    env_file: ./grout-server/.env
+
+  editor:
     build: .
+    depends_on:
+      - grout
     volumes:
       - .:/opt/schema_editor
-    command: test
+    command: serve
     ports:
       - "9000:9000"
       - "35731:35731"
+
+  loaddata:
+    build: ./scripts/sample-data
+    depends_on:
+      - grout
+    volumes:
+      - ./scripts/sample-data:/opt/loaddata
+    command: python loaddata.py

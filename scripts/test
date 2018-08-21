@@ -27,7 +27,7 @@ function app_tests() {
     echo "Testing the app..."
     echo "-------------------------------------------------------------------"
 
-    docker-compose run --rm test
+    docker-compose run --rm --no-deps editor test
 
     echo "PASSED: app tests passed."
 
