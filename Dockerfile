@@ -17,7 +17,7 @@ RUN apt-get install -y --no-install-recommends \
   python \
   python-dev \
   && rm -rf /var/lib/apt/lists/* && \
-  npm install -g --save grunt-cli
+  yarn global add grunt-cli
 
 RUN gem install ffi -v 1.9.18
 RUN gem install sass -v 3.4.22
@@ -27,5 +27,7 @@ RUN mkdir -p /opt/schema_editor
 
 WORKDIR /opt/schema_editor
 COPY . /opt/schema_editor
+
+RUN yarn cache clean
 
 ENTRYPOINT ["grunt"]

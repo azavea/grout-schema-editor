@@ -58,7 +58,8 @@ git installed with SSH set up. If you need an SSH key, refer to [the docs for ge
 one](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key).)
 
 ```bash
-# Set up the development environment.
+# Set up the development environment. Add the --ssh or --https flag to specify
+# which method you'd like to use to install GitHub dependencies.
 ./scripts/update
 
 # Create a local config file for the project.
