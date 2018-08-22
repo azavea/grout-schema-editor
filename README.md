@@ -1,64 +1,116 @@
 # Grout Schema Editor
 
-A simple, static admin portal providing an interface to a Grout database.
+[![Build Status](https://travis-ci.org/azavea/grout-schema-editor.svg?branch=develop)](https://travis-ci.org/azavea/grout-schema-editor)
 
-## Requirements
+Grout Schema Editor is a simple, static admin portal providing a web interface to
+a [Grout](https://github.com/azavea/grout) database server.
 
-The Grout Schema Editor is containerized with Docker for ease of use. In order
-to develop with Docker, you need the following dependencies:
+With Grout Schema Editor, you can **manage records and schemas for a Grout project**
+entirely from the web -- no code required.
 
-- [Docker CE Engine](https://docs.docker.com/install/) >= 1.13.0 (must be
-  compatible with [Docker Compose file v3
-  syntax](https://docs.docker.com/compose/compose-file/#compose-and-docker-compatibility-matrix))
-- [Docker Compose](https://docs.docker.com/compose/install/)
+## Usage
 
-## Use the schema editor in a project 
+### Installation
 
-To incorporate the Grout Schema Editor into a project, clone it into your project
-repo:
+This guide covers installing and configuring a Grout Schema Editor instance
+in your project. Note that Grout Schema Editor assumes that you already have
+a Grout API server installed. For instructions on how to install a Grout
+server, see the [Grout documentation](https://github.com/azavea/grout).
+
+To incorporate the Grout Schema Editor into a project that uses Grout, clone
+this repo into the directory containing your project:
 
 ```
 # Run this command in your project directory.
-git clone git@github.com:azavea/grout-server.git
+$ git clone git@github.com:azavea/grout-server.git
 ```
 
-You can also manage the dependency using [git
-subtree](https://www.atlassian.com/blog/git/alternatives-to-git-submodule-git-subtree)
-if you plan to contribute your changes back upstream:
-
-```bash
-# Add the grout-schema-editor repo as a remote to your project directory.
-git remote add -f grout-schema-editor git@github.com:azavea/grout-schema-editor.git
-
-# Pull in grout-schema-editor as a subtree in your project.
-git subtree add --prefix grout-schema-editor grout-schema-editor master
-```
-
-Next, copy and edit the example app config file to match the requirements of your project.
-The default config values should be fine for most applications, with
-the exception of `config.api.hostname`, which will likely need to be changed in order
-to match the URI of your Grout database server instance:
+Next, copy and edit the example config file to match the requirements of your project.
 
 ```bash
 # Move the example config file into the app directory.
 cp example/config.js app/scripts/config.js
 ```
 
-Finally, you'll have to run Grout server in parallel with your app so that
-they can communicate with each other. For this purpose, we recommend
-[Docker Compose](https://docs.docker.com/compose/). You can find an example
-of a project that integrates an Grout server with Docker Compose in the
-[Grout Blueprint](https://github.com/azavea/grout-blueprint) repo.
+### Configuration
 
-## Testing
+The default config values in `app/scripts/config.js` should be fine for most applications, with
+the exception of `config.api.hostname`, which will likely need to be changed in order
+to match the URI of your Grout database server instance.
 
-If you'd like to contribute to Grout Schema Editor, you can run tests using the
-scripts located in the `scripts` directory:
+## Developing
+
+### Requirements
+
+The Grout Schema Editor is containerized with Docker to ensure similar
+environments across platforms. In order to develop Grout Schema Editor with Docker, you need the
+following dependencies:
+
+- [Docker CE Engine](https://docs.docker.com/install/) >= 1.13.0 (must be
+  compatible with [Docker Compose file v3
+  syntax](https://docs.docker.com/compose/compose-file/#compose-and-docker-compatibility-matrix))
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Installation
+
+Clone the repo with git.
 
 ```bash
-# Build containers and install NPM modules.
-./scripts/update
-
-# Run tests.
-./scripts/test
+$ git clone git@github.com:azavea/grout.git
+$ cd grout
 ```
+
+Run the `update` script to set up your development environment.
+
+```bash
+$ ./scripts/update
+```
+
+### Testing
+
+If you'd like to contribute to Grout Schema Editor, you can run tests using the
+`test` script located in the `scripts` directory.
+
+```bash
+$ ./scripts/test
+```
+
+The test suite uses Karma to run tests using a headless Chrome browser. By
+default, it will only run tests once before stopping the test server. If you
+need to debug a test failure, you can keep the test server running by setting
+the Karma `singleRun` flag to `false` in `Gruntfile.js`.
+
+```javascript
+// Gruntfile.js
+
+karma: {
+  unit: {
+      configFile: 'test/karma.conf.js',
+      singleRun: false
+  }
+}
+```
+
+Edit `docker-compose.yml` to expose the port that the test server is running
+on.
+
+```yml
+# docker-compose.yml
+
+services:
+  editor:
+    ...
+    ports:
+      - "9000:9000"
+      - "35731:35731"
+      - "9001:8080"  # Bind port 8080 in the container to port 9001 on your machine
+```
+
+Navigate to the host that is listening to the test server (in this case,
+`localhost:9001`) and hit the `DEBUG` button in the top-right corner to run
+the tests in a browser window. Then, you can use your browser's debug tools
+to debug the tests.
+
+For tips on debugging Karma tests, see Gleb Bahmutov's [Debugging
+Karma Unit Tests](https://glebbahmutov.com/blog/debugging-karma-unit-tests/)
+blog post.
