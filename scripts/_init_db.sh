@@ -9,7 +9,7 @@ function init_db() {
     INIT_COUNTER=15
     COUNTER=$INIT_COUNTER
     until
-        [ $(docker-compose exec db pg_isready -d postgres -h "0.0.0.0" -p 5432 > /dev/null 2>&1 && echo $? || echo 1) -eq 0 ] ||
+        [ $(docker-compose exec db pg_isready -d postgres -h "0.0.0.0" -p 5432 -U postgres > /dev/null 2>&1 && echo $? || echo 1) -eq 0 ] ||
         [ $COUNTER -eq 0 ];
     do
         echo "Database unavailable -- attempting to connect (${COUNTER} attempts remaining)"

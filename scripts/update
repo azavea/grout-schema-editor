@@ -59,7 +59,7 @@ function build() {
 
     echo "Installing NPM packages..."
     echo "----------------------------"
-    docker-compose run --rm --entrypoint "yarn install" editor
+    docker-compose run --rm --no-deps --entrypoint "yarn install" editor
     echo
 
     echo "Running migrations in the Grout server..."
