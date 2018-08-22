@@ -59,7 +59,12 @@ function build() {
 
     echo "Installing NPM packages..."
     echo "----------------------------"
-    docker-compose run --rm --no-deps --entrypoint "yarn install" editor
+    # `network-concurrency` and `mutex` both attempt to address concurrent
+    # caching update issues with yarn. Currently slightly superstitious code,
+    # since the Yarn maintainers haven't quite gotten to the bottom of the
+    # issue. More context here:
+    # https://github.com/yarnpkg/yarn/issues/2629
+    docker-compose run --rm --no-deps --entrypoint yarn editor install --network-concurrency 1 --mutex network
     echo
 
     echo "Running migrations in the Grout server..."
