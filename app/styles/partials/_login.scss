@@ -1,9 +1,14 @@
-/* Buffer the login form from the navbar. */
 .loginmodal {
+    /* Buffer the login form from the navbar. */
     margin-top: 100px;
-}
 
-/* Pad the bottom of the login button to make the well larger. */
-.login-button {
-    padding-bottom: 25px;
+    /* Give the form a light border. */
+    form {
+        border: 1px solid #cecece;
+    }
+
+    /* Pad the bottom of the login button to make the well larger. */
+    .login-button {
+        padding-bottom: 25px;
+    }
 }
