@@ -93,7 +93,7 @@ The schema editor uses the term "related content" to refer to a _form_ contained
 
 In the data collection views (`Add/Edit Records`), each related content will show up as a separate editable form.
 
-By default, every new RecordType will be created with a `<RecordType> Details` related content form. If you plan to store large data like Images on Records, the `Details` form can sserve as a good place to store simple metadata about a Record, since the Grout API lets you query only for Record details using the `details_only` query parameter. For more information, see the [Grout API documentation](https://github.com/azavea/grout#api-documentation).
+By default, every new RecordType will be created with a `<RecordType> Details` related content form. If you plan to store large data like Images on Records, the `Details` form can serve as a good place to store simple metadata about a Record, since the Grout API lets you query only for Record details using the `details_only` query parameter. For more information, see the [Grout API documentation](https://github.com/azavea/grout#api-documentation).
 
 ## Developing
 
