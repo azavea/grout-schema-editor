@@ -8,6 +8,36 @@ a [Grout](https://github.com/azavea/grout) database server.
 With Grout Schema Editor, you can **manage records and schemas for a Grout project**
 entirely from the web -- no code required.
 
+## Contents
+
+- [**Demo**](#demo)
+- [**Usage**](#usage)
+    - [Installation](#installation)
+    - [Configuration](#configuration)
+    - [A note on "related content"](#a-note-on-related-content)
+- [**Developing**](#developing)
+    - [Requirements](#requirements)
+    - [Installation](#installation-1)
+    - [Testing](#testing)
+
+## Demo
+
+Edit the schema of a record:
+
+![Edit a RecordSchema](./docs/images/schema-editor-edit-schema.png)
+
+Preview the new schema as a data collection form:
+
+![Preview a RecordSchema form](./docs/images/schema-editor-form-preview.png)
+
+View a list of all available records in a RecordType:
+
+![List all available records](./docs/images/schema-editor-record-list.png)
+
+Add a new record:
+
+![Add a record](./docs/images/schema-editor-new-record.png)
+
 ## Usage
 
 ### Installation
@@ -56,6 +86,14 @@ Available configuration attributes include:
 | `api.groups.readWrite` | String | Name of the staff (read-and-write) authentication group in your Grout API server. Corresponds to the `USER_GROUPS['READ_WRITE']` setting in [Grout Server](https://github.com/azavea/grout-server). |
 | `record.limit` | Number | Default number of Records to retrieve from the API for any `GET` request. |
 | `localization.timeZone` | String | The timezone of this application. Should be formatted as a [tz database timezone identifier](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). |
+
+### A note on "related content"
+
+The schema editor uses the term "related content" to refer to a _form_ contained on a RecordType. Related content allows you to namespace fields, so that if you had, say, a `Cat` RecordType and you wanted to store information about the `Owner`, you could have a `Cat Details` related content form and an `Owner` related content form, and each form could have a separate `name` field without confusing Grout.
+
+In the data collection views (`Add/Edit Records`), each related content will show up as a separate editable form.
+
+By default, every new RecordType will be created with a `<RecordType> Details` related content form. If you plan to store large data like Images on Records, the `Details` form can sserve as a good place to store simple metadata about a Record, since the Grout API lets you query only for Record details using the `details_only` query parameter. For more information, see the [Grout API documentation](https://github.com/azavea/grout#api-documentation).
 
 ## Developing
 
