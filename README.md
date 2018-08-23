@@ -18,6 +18,7 @@ entirely from the web -- no code required.
 - [**Developing**](#developing)
     - [Requirements](#requirements)
     - [Installation](#installation-1)
+    - [Running a development server](#running-a-development-server)
     - [Testing](#testing)
 
 ## Demo
@@ -117,11 +118,30 @@ $ git clone git@github.com:azavea/grout.git
 $ cd grout
 ```
 
-Run the `update` script to set up your development environment.
+You can set up a development environment for working on Grout Schema Editor
+using the `update` script. (Note that the `update` script assumes you have
+git installed with SSH set up. If you need an SSH key, refer to [the docs for generating
+one](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key).)
 
 ```bash
-$ ./scripts/update
+# Set up the development environment. Add the --ssh or --https flag to specify
+# which method you'd like to use to install GitHub dependencies.
+./scripts/update
+
+# Create a local config file for the project.
+cp example/config.js app/scripts/config.js
 ```
+
+### Running a development server
+
+Use the `server` script to start the development server:
+
+```bash
+./scripts/server
+```
+
+This will run a Grout API server on `localhost:8000/api`, and the schema editor
+app on `localhost:9000`.
 
 ### Testing
 
