@@ -242,11 +242,22 @@
                     collapsed: true,
                     theme: 'bootstrap3',
                     iconlib: 'bootstrap3',
-                    startval: ctl.record ? ctl.record.data : null
                 },
                 errors: []
             };
             /* jshint camelcase: true */
+
+            // If a record is loaded, seed the editor with that record.
+            // Only set this option if ctl.record exists -- even though the json-editor
+            // docs claim that the default value for this option is `null`, the json-editor
+            // code actually checks for the existence of the option using
+            // `hasOwnProperty('startval')` in order to determine
+            // whether to use a startval, meaning that `null` will get
+            // innapropriately assigned to the startval even though it
+            // has no semantic meaning.
+            if (ctl.record) {
+                ctl.editor.options.startval = ctl.record.data;
+            }
         }
 
         /*
